@@ -2,7 +2,7 @@ name: 'get-variables'
 description: 'Get variables'
 
 inputs:
-  region:
+  slack_url:
     required: true
   env:
     required: true

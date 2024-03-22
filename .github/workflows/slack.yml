@@ -23,9 +23,11 @@ jobs:
         run: npm ci
       - name: Get variables
         id: extract
+        env:
+          slack_url: ${{secrets.SLACK_WEBHOOK_URL}}
         uses: ./.github/actions/get-variables
         with:
-          slack_url: ${{ secrets.SLACK_WEBHOOK_URL }}
+          slack_url: env.slack_url
 
       - name: Echo variables
         run: |

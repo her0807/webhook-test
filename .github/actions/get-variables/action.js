@@ -1,5 +1,6 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
+const http = require('http');
 
 const ENV_REGION_MAP = {
   dev: {

@@ -24,8 +24,10 @@ jobs:
       - name: Get variables
         id: extract
         uses: ./.github/actions/get-variables
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         with:
-          slack_url: ${{secrets.SLACK_WEBHOOK_URL}}
+          slack_url: $SLACK_WEBHOOK_URL
 
       - name: Echo variables
         run: |

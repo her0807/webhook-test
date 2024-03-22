@@ -1,6 +1,10 @@
 name: 'get-variables'
 description: 'Get variables'
 
+inputs:
+  slack_url:
+    required: true
+
 outputs:
   lang:
     description: 'First value'

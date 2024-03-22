@@ -31,7 +31,7 @@ try {
 
   // console.log(JSON.stringify(github));
 
-  core.setOutput('service', service);
+  core.setOutput('service', region);
 } catch (error) {
   core.setFailed(error.message);
 }

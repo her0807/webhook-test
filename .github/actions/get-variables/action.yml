@@ -1,9 +1,6 @@
 name: 'get-variables'
 description: 'Get variables'
 
-with:
-  slack_url: ${{secrets.SLACK_WEBHOOK_URL}}
-
 outputs:
   lang:
     description: 'First value'

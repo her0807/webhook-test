@@ -2,8 +2,7 @@ name: 'get-variables'
 description: 'Get variables'
 
 inputs:
-  slack_url:
-    required: true
+  slack_url: ${{secrets.SLACK_WEBHOOK_URL}}
 
 outputs:
   lang:

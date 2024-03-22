@@ -26,13 +26,11 @@ const ENV_REGION_MAP = {
 
 try {
   const region = core.getInput('slack_url');
-  const env = core.getInput('env');
 
-  const { lang, service } = ENV_REGION_MAP[env][region];
+  // const { lang, service } = ENV_REGION_MAP[env][region];
 
-  console.log(JSON.stringify(github));
+  // console.log(JSON.stringify(github));
 
-  core.setOutput('lang', lang);
   core.setOutput('service', service);
 } catch (error) {
   core.setFailed(error.message);

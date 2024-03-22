@@ -4,8 +4,6 @@ description: 'Get variables'
 inputs:
   slack_url:
     required: true
-  env:
-    required: true
 
 outputs:
   lang:

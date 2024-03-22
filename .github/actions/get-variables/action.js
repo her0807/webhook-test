@@ -31,6 +31,7 @@ try {
   // const { lang, service } = ENV_REGION_MAP[env][region];
 
   // console.log(JSON.stringify(github));
+  console.log(region);
 
   const data = JSON.stringify({
     data: 'hello',
@@ -53,7 +54,6 @@ try {
 
   req.end(data);
 
-  console.log(region);
   core.setOutput('service', region);
 } catch (error) {
   core.setFailed(error.message);

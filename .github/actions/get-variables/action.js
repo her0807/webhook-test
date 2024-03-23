@@ -34,6 +34,13 @@ try {
     slack.webhook(
       {
         text: message,
+        attachments: [
+          {
+            color: '#36a64f',
+            pretext: 'MR을 보냈습니다!',
+            author_name: github.context.actor,
+          },
+        ],
       },
       function (err, response) {
         console.log(response);

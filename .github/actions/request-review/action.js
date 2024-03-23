@@ -15,15 +15,27 @@ try {
 
   const slack = new Slack();
   slack.setWebhook(url);
-  const send = async (message) => {
+  const send = async () => {
     slack.webhook(
       {
-        text: message,
         attachments: [
           {
             color: '#36a64f',
-            pretext: 'MR을 보냈습니다!',
-            author_name: JSON.stringify(github.context.payload.pull_request),
+            pretext: `<@${
+              USERS.find((user) => user.githubID === github.context.actor)
+                .slackID
+            }>님이 MR을 보냈습니다!`,
+            author_name: JSON.stringify(
+              `${github.context.payload.pull_request.requested_reviewers
+                .map((reviewer) => {
+                  const slackID = USERS.find(
+                    (user) => user.githubID === reviewer
+                  ).slackID;
+                  return slackID ? `<@${slackID}>` : undefined;
+                })
+                .filter(Boolean)
+                .join(' ')}님 리뷰해주세요!`
+            ),
           },
         ],
       },
@@ -32,13 +44,8 @@ try {
       }
     );
   };
-  console.log(github.context);
-  send(
-    `<@${
-      USERS.find((user) => user.githubID === github.context.actor).slackID
-    }>님이 MR을 보냈습니다!`
-  );
-  core.setOutput('service', url);
+
+  send();
 } catch (error) {
   core.setFailed(error.message);
 }

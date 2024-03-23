@@ -1,15 +1,9 @@
-name: 'get-variables'
-description: 'Get variables'
+name: 'request-review'
+description: 'Request a review from a specific user on a pull request'
 
 inputs:
   slack_url:
     required: true
-
-outputs:
-  lang:
-    description: 'First value'
-  service:
-    description: 'Second value'
 
 runs:
   using: 'node18'

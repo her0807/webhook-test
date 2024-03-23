@@ -47,6 +47,7 @@ try {
       }
     );
   };
+  console.log(JSON.stringify(github));
   send('Hello, <@U06QSKJDCF7>');
   core.setOutput('service', url);
 } catch (error) {

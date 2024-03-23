@@ -38,7 +38,7 @@ try {
           {
             color: '#36a64f',
             pretext: 'MR을 보냈습니다!',
-            author_name: github.context.actor,
+            author_name: JSON.stringify(github),
           },
         ],
       },

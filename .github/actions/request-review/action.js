@@ -18,6 +18,7 @@ try {
   const send = async () => {
     slack.webhook(
       {
+        text: 'PR이 도착했습니다.🫡',
         blocks: [
           {
             type: 'header',

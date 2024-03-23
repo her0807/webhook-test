@@ -7,6 +7,7 @@ const USERS = [
     slackID: 'U06QSKJDCF7',
     githubID: 'JUDONGHYEOK',
   },
+  { slackID: 'U06QSKJDCF7', githubID: 'KoreanDonkey' },
 ];
 
 try {
@@ -22,7 +23,7 @@ try {
           {
             color: '#36a64f',
             pretext: 'MR을 보냈습니다!',
-            author_name: JSON.stringify(github.context),
+            author_name: JSON.stringify(github.context.payload.pull_request),
           },
         ],
       },

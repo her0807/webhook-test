@@ -28,9 +28,9 @@ try {
             author_name: JSON.stringify(
               `${github.context.payload.pull_request.requested_reviewers
                 .map((reviewer) => {
-                  const slackID = USERS.find(
+                  const { slackID } = USERS.find(
                     (user) => user.githubID === reviewer
-                  ).slackID;
+                  );
                   return slackID ? `<@${slackID}>` : undefined;
                 })
                 .filter(Boolean)

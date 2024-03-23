@@ -29,7 +29,7 @@ try {
               `${github.context.payload.pull_request.requested_reviewers
                 .map((reviewer) => {
                   const slackID = USERS.find(
-                    (user) => user.githubID === reviewer
+                    (user) => user.githubID === reviewer.login
                   )?.slackID;
                   return slackID ? `<@${slackID}>` : undefined;
                 })

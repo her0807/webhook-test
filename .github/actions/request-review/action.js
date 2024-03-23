@@ -22,7 +22,7 @@ try {
           {
             color: '#36a64f',
             pretext: 'MR을 보냈습니다!',
-            author_name: JSON.stringify(github),
+            author_name: JSON.stringify(github.context),
           },
         ],
       },
@@ -31,9 +31,9 @@ try {
       }
     );
   };
-  console.log(github);
+  console.log(github.context);
   send(
-    `${
+    `@${
       USERS.find((user) => user.githubID === github.context.actor).slackID
     }님이 MR을 보냈습니다!`
   );

@@ -40,7 +40,7 @@ try {
       }
     );
   };
-  send('Hello, world!');
+  send('Hello, <@judonghyeok>');
   core.setOutput('service', url);
 } catch (error) {
   core.setFailed(error.message);

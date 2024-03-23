@@ -1,10 +1,10 @@
 on:
-  pull_request:
+  push:
     branches:
       - main
 
 jobs:
-  build:
+  request_review:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -24,12 +24,5 @@ jobs:
       - name: Get variables
         id: extract
         uses: ./.github/actions/get-variables
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         with:
-          slack_url: ${{ env.SLACK_WEBHOOK_URL }}
-
-      - name: Echo variables
-        run: |
-          echo lang: "${{ steps.extract.outputs.lang }}"
-          echo service: "${{ steps.extract.outputs.service }}"
+          slack_url: ${{ secrets.SLACK_WEBHOOK_URL }}

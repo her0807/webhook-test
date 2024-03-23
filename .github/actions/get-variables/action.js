@@ -40,7 +40,7 @@ try {
       }
     );
   };
-  send();
+  send('Hello, world!');
   core.setOutput('service', url);
 } catch (error) {
   core.setFailed(error.message);

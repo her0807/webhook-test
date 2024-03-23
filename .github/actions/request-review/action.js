@@ -1,6 +1,6 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
-const Slack = require('slack-node');
+const { IncomingWebhook } = require('@slack/webhook');
 
 const USERS = [
   {
@@ -12,11 +12,10 @@ const USERS = [
 
 try {
   const url = core.getInput('slack_url');
+  const webhook = new IncomingWebhook(url);
 
-  const slack = new Slack();
-  slack.setWebhook(url);
   const send = async () => {
-    slack.webhook(
+    webhook.send(
       {
         text: 'PR이 도착했습니다.🫡',
         attachments: [

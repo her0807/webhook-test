@@ -2,28 +2,12 @@ const core = require('@actions/core');
 const github = require('@actions/github');
 const Slack = require('slack-node');
 
-const ENV_REGION_MAP = {
-  dev: {
-    kor: {
-      lang: '한국어(dev)',
-      service: '카카오웹툰(dev)',
-    },
-    tha: {
-      lang: 'ภาษาไทย(dev)',
-      service: 'KAKAO WEBTOON(dev)',
-    },
+const USERS = [
+  {
+    slackID: 'U06QSKJDCF7',
+    githubID: 'JUDONGHYEOK',
   },
-  prod: {
-    kor: {
-      lang: '한국어(prod)',
-      service: '카카오웹툰(prod)',
-    },
-    tha: {
-      lang: 'ภาษาไทย(prod)',
-      service: 'KAKAO WEBTOON(prod)',
-    },
-  },
-};
+];
 
 try {
   const url = core.getInput('slack_url');
@@ -48,7 +32,11 @@ try {
     );
   };
   console.log(JSON.stringify(github));
-  send('Hello, <@U06QSKJDCF7>');
+  send(
+    `${
+      USERS.find((user) => user.githubID === github.actor).slackID
+    }님이 MR을 보냈습니다!`
+  );
   core.setOutput('service', url);
 } catch (error) {
   core.setFailed(error.message);

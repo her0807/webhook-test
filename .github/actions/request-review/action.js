@@ -34,7 +34,7 @@ try {
   console.log(github);
   send(
     `${
-      USERS.find((user) => user.githubID === github.actor).slackID
+      USERS.find((user) => user.githubID === github.context.actor).slackID
     }님이 MR을 보냈습니다!`
   );
   core.setOutput('service', url);

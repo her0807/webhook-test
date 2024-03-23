@@ -19,7 +19,7 @@ try {
     slack.webhook(
       {
         text: 'PR이 도착했습니다.🫡',
-        blocks: [
+        attachments: [
           {
             type: 'header',
             text: {

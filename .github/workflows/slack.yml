@@ -27,7 +27,7 @@ jobs:
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         with:
-          slack_url: $SLACK_WEBHOOK_URL
+          slack_url: ${{ env.SLACK_WEBHOOK_URL }}
 
       - name: Echo variables
         run: |

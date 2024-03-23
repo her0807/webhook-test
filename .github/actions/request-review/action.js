@@ -21,38 +21,43 @@ try {
         text: 'PR이 도착했습니다.🫡',
         attachments: [
           {
-            type: 'header',
-            text: {
-              type: 'plain_text',
-              text: 'PR이 도착했습니다.🫡',
-              emoji: true,
-            },
+            body: [
+              {
+                type: 'header',
+                text: {
+                  type: 'plain_text',
+                  text: 'PR이 도착했습니다.🫡',
+                  emoji: true,
+                },
+              },
+              {
+                type: 'section',
+                text: {
+                  type: 'mrkdwn',
+                  text: `<@${
+                    USERS.find((user) => user.githubID === github.context.actor)
+                      .slackID
+                  }>님이 MR을 보냈습니다!`,
+                },
+              },
+              {
+                type: 'section',
+                text: {
+                  type: 'mrkdwn',
+                  text: `${github.context.payload.pull_request.requested_reviewers
+                    .map((reviewer) => {
+                      const slackID = USERS.find(
+                        (user) => user.githubID === reviewer.login
+                      )?.slackID;
+                      return slackID ? `<@${slackID}>` : undefined;
+                    })
+                    .filter(Boolean)
+                    .join(' ')}님 리뷰해주세요!`,
+                },
+              },
+            ],
           },
-          {
-            type: 'section',
-            text: {
-              type: 'mrkdwn',
-              text: `<@${
-                USERS.find((user) => user.githubID === github.context.actor)
-                  .slackID
-              }>님이 MR을 보냈습니다!`,
-            },
-          },
-          {
-            type: 'section',
-            text: {
-              type: 'mrkdwn',
-              text: `${github.context.payload.pull_request.requested_reviewers
-                .map((reviewer) => {
-                  const slackID = USERS.find(
-                    (user) => user.githubID === reviewer.login
-                  )?.slackID;
-                  return slackID ? `<@${slackID}>` : undefined;
-                })
-                .filter(Boolean)
-                .join(' ')}님 리뷰해주세요!`,
-            },
-          },
+
           // {
           //   color: '#36a64f',
           //   pretext: `<@${

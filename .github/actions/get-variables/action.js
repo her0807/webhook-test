@@ -1,6 +1,6 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
-const http = require('http');
+const Slack = require('slack-node');
 
 const ENV_REGION_MAP = {
   dev: {
@@ -26,35 +26,22 @@ const ENV_REGION_MAP = {
 };
 
 try {
-  const region = core.getInput('slack_url');
+  const url = core.getInput('slack_url');
 
-  // const { lang, service } = ENV_REGION_MAP[env][region];
-
-  // console.log(JSON.stringify(github));
-  console.log(region);
-
-  const data = JSON.stringify({
-    data: 'hello',
-  });
-
-  const options = {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8',
-    },
-    body: {
-      payload: JSON.stringify({
-        text: 'Hello, World!',
-      }),
-    },
+  const slack = new Slack();
+  slack.setWebhook(url);
+  const send = async (message) => {
+    slack.webhook(
+      {
+        text: message,
+      },
+      function (err, response) {
+        console.log(response);
+      }
+    );
   };
-  const req = http.request(region, options, (res) => {
-    console.log(res.body);
-  });
-
-  req.end(data);
-
-  core.setOutput('service', region);
+  send();
+  core.setOutput('service', url);
 } catch (error) {
   core.setFailed(error.message);
 }

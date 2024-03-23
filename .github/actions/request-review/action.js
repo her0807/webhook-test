@@ -31,7 +31,7 @@ try {
       }
     );
   };
-  console.log(JSON.stringify(github));
+  console.log(github);
   send(
     `${
       USERS.find((user) => user.githubID === github.actor).slackID

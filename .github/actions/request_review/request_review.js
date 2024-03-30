@@ -51,7 +51,14 @@ try {
                 .filter(Boolean)
                 .join(' ')}님 리뷰해주세요!`,
             },
+          },{
+            type: 'section',
+            text: {
+              type: 'mrkdwn',
+              text: `### MR 정보 \n - 제목: ${github.context.payload.pull_request.title} \n - URL: ${github.context.payload.pull_request.html_url}`,
+            },
           },
+
 
           // {
           //   color: '#36a64f',

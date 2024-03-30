@@ -78,6 +78,9 @@ try {
       }
     );
   };
+  console.log(github.context.actor_id)
+  console.log(github.context.payload.pull_request.requested_reviewers)
+  console.log('=-------------------')
   console.log(github.context);
   send();
 } catch (error) {

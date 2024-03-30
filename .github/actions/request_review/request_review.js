@@ -60,11 +60,14 @@ try {
           },
           {
             type: "actions",
-              elements: [{
+            elements: [{
                 type: "button",
-                // url: `${github.context.payload.pull_request.html_url}`,
-                text: "PR 확인하기",
-              }],
+                url: `${github.context.payload.pull_request.html_url}`,
+                text: {
+                  type: "plain_text",
+                  text: "PR 확인하기",
+                }
+            }],
           },
         ],
       },

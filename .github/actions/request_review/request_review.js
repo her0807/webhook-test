@@ -44,6 +44,7 @@ try {
                     const slackID = USERS.find(
                       user => user.githubID === reviewer.id
                     )?.slackID;
+                      console.log(reviewer.id)  
                     return slackID ? `<@${slackID}>` : undefined;
                   })
                   .filter(Boolean)

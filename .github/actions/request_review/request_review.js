@@ -61,11 +61,11 @@ try {
           },
           {
             type: "actions",
-              text: {
+              elements: [{
                 type: "button",
                 url: `${github.context.payload.pull_request.html_url}`,
                 text: "PR 확인하기",
-              },
+              }],
           },
 
           // {

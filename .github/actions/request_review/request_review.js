@@ -5,9 +5,9 @@ const { IncomingWebhook } = require("@slack/webhook");
 const USERS = [
   {
     slackID: "U06QSKJDCF7",
-    githubID: "5674167"
+    githubID: 5674167
   },
-  { slackID: "U06QSKJDCF7", githubID: "164613004" }
+  { slackID: "U06QSKJDCF7", githubID: 164613004 }
 ];
 
 try {

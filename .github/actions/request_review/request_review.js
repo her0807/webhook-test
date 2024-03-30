@@ -33,7 +33,7 @@ try {
               {
                 type: "mrkdwn",
                 text: `<@${
-                  USERS.find(user => user.githubID === github.context.actor_id)
+                  USERS.find(user => user.githubID === github.context.payload.sender.id)
                     ?.slackID
                 }>님이 MR을 보냈습니다!`
               },
@@ -78,7 +78,7 @@ try {
       }
     );
   };
-  console.log(github.context.actor_id)
+  console.log(github.context.payload.sender.id)
   console.log(github.context.payload.pull_request.requested_reviewers)
   console.log('=-------------------')
   console.log(github.context);

@@ -78,7 +78,7 @@ try {
       }
     );
   };
-  console.log(github.context.payload.pull_request.requested_reviewers);
+  console.log(github.context.payload.pull_request);
   send();
 } catch (error) {
   core.setFailed(error.message);

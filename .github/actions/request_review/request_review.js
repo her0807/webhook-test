@@ -55,9 +55,19 @@ try {
             type: 'section',
             text: {
               type: 'mrkdwn',
-              text: `### MR 정보 \n - 제목: ${github.context.payload.pull_request.title} \n - URL: ${github.context.payload.pull_request.html_url}`,
+              text: `### PR 정보 \n - 제목: ${github.context.payload.pull_request.title} \n - URL: ${github.context.payload.pull_request.html_url}`,
             },
           },
+          {type: 'section',
+          text:{
+            type:'actions',
+            text:{
+              type:'button',
+              url: `${github.context.payload.pull_request.html_url}`,
+              text: 'PR 확인하기'
+            }
+          }
+        }
 
 
           // {

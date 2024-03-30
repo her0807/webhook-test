@@ -32,8 +32,7 @@ try {
             text: {
               type: "mrkdwn",
               text: `<@${
-                USERS.find((user) => user.githubID === github.context.actor)
-                  .slackID
+                USERS.find((user) => user.githubID === github.context.actor)?.slackID
               }>님이 MR을 보냈습니다!`,
             },
           },
@@ -63,29 +62,10 @@ try {
             type: "actions",
               elements: [{
                 type: "button",
-                url: `${github.context.payload.pull_request.html_url}`,
+                // url: `${github.context.payload.pull_request.html_url}`,
                 text: "PR 확인하기",
               }],
           },
-
-          // {
-          //   color: '#36a64f',
-          //   pretext: `<@${
-          //     USERS.find((user) => user.githubID === github.context.actor)
-          //       .slackID
-          //   }>님이 MR을 보냈습니다!`,
-          //   author_name: JSON.stringify(
-          //     `${github.context.payload.pull_request.requested_reviewers
-          //       .map((reviewer) => {
-          //         const slackID = USERS.find(
-          //           (user) => user.githubID === reviewer.login
-          //         )?.slackID;
-          //         return slackID ? `<@${slackID}>` : undefined;
-          //       })
-          //       .filter(Boolean)
-          //       .join(' ')}님 리뷰해주세요!`
-          //   ),
-          // },
         ],
       },
       function (err, response) {
